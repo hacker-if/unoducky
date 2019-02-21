@@ -17,7 +17,7 @@ void loop() {
     kb.ENTER();    
     delay(2000);
     
-    kb.STRING("wget https://i.ytimg.com/vi/8baANpiNae4/maxresdefault.jpg -O wall.jpg && xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/image-path --set $HOME/wall.jpg"); 
+    kb.STRING("wget https://i.ytimg.com/vi/8baANpiNae4/maxresdefault.jpg -O wall.jpg && xfconf-query --channel xfce4-desktop --property /backdrop/screen0/monitor0/last-image --set $HOME/wall.jpg"); 
     kb.ENTER();
     
     kb.DELAY(300000); 
