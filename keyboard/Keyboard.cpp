@@ -1,19 +1,12 @@
+#include "Arduino.h"
 #include "Keyboard.h"
 
-#if ARDUINO >= 100
-    #include "Arduino.h"
-#else
-extern "C" {
-    #include "WConstants.h"
-}
-#endif
-
-Keyboard::Keyboard(void)
+Keyboard::Keyboard()
 {
-    buf[8] = { 0 };
+    for (int i = 0; i < 8; i++) buf[i] = 0;
 }
 
-void Keyboard::PRESS(void){
+void Keyboard::PRESS(){
     Serial.write(buf, 8);	// Send keypress
     buf[0] = 0;
     buf[2] = 0;
@@ -32,19 +25,19 @@ void Keyboard::ALT(char *c){
     PRESS();
 }
 
-void Keyboard::ALT_SPACE(void){
+void Keyboard::ALT_SPACE(){
     buf[0] = KEY_LEFT_ALT;
     buf[2] = KEY_SPC;
     PRESS();
 }
 
-void Keyboard::ALT_F2(void){
+void Keyboard::ALT_F2(){
     buf[0] = KEY_LEFT_ALT;
     buf[2] = KEY_F2;
     PRESS();
 }
 
-void Keyboard::ALT_F4(void){
+void Keyboard::ALT_F4(){
     buf[0] = KEY_LEFT_ALT;
     buf[2] = KEY_F4;
     PRESS();
@@ -58,7 +51,7 @@ void Keyboard::CTRL_ALT(char *c){
     PRESS();
 }
 
-void Keyboard::CTRL_ALT_DEL(void){
+void Keyboard::CTRL_ALT_DEL(){
     buf[0] = KEY_LEFT_CTRL + KEY_LEFT_ALT;
     buf[2] = 0x63;
     PRESS();
@@ -99,42 +92,42 @@ void Keyboard::WINDOWS(char *c){
 
 
 // Single Keys
-void Keyboard::ENTER(void){
+void Keyboard::ENTER(){
     buf[2] = KEY_ENTER;
     PRESS();
 }
 
-void Keyboard::TAB(void){
+void Keyboard::TAB(){
     buf[2] = KEY_TAB;
     PRESS();
 }
 
-void Keyboard::PRINT(void){
+void Keyboard::PRINT(){
     buf[2] = KEY_PRTSCR;
     PRESS();
 }
 
-void Keyboard::BACKSPACE(void){
+void Keyboard::BACKSPACE(){
     buf[2] = KEY_BACKSPC;
     PRESS();
 }
 
-void Keyboard::RIGHT_ARROW(void){
+void Keyboard::RIGHT_ARROW(){
     buf[2] = KEY_RIGHT_ARROW;
     PRESS();
 }
 
-void Keyboard::LEFT_ARROW(void){
+void Keyboard::LEFT_ARROW(){
     buf[2] = KEY_LEFT_ARROW;
     PRESS();
 }
 
-void Keyboard::DOWN_ARROW(void){
+void Keyboard::DOWN_ARROW(){
     buf[2] = KEY_DOWN_ARROW;
     PRESS();
 }
 
-void Keyboard::UP_ARROW(void){
+void Keyboard::UP_ARROW(){
     buf[2] = KEY_UP_ARROW;
     PRESS();
 }
@@ -262,3 +255,4 @@ void Keyboard::STRING(char *txt){
         txt++;
     }
 }
+

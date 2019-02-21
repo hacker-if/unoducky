@@ -1,16 +1,7 @@
 #ifndef Keyboard_h
 #define Keyboard_h
 
-#define KEYBOARDLIBVERSION "1.0.0"
-
-#include <inttypes.h>
-
-#if ARDUINO >= 100
 #include "Arduino.h"
-#else
-#include "WProgram.h"
-#include "pins_arduino.h"
-#endif
 
 #define KEY_LEFT_CTRL	0x01
 #define KEY_LEFT_SHIFT	0x02
@@ -62,31 +53,32 @@ class Keyboard
       uint8_t buf[8];	/* Keyboard report buffer */
 
    public:
-      Keyboard(void);
-      void  PRESS(void);
+      Keyboard();
+      void  PRESS();
       void  DELAY(unsigned t);
 
       void  ALT(char *c);
-      void  ALT_SPACE(void);
-      void  ALT_F2(void);
-      void  ALT_F4(void);
+      void  ALT_SPACE();
+      void  ALT_F2();
+      void  ALT_F4();
 
       void  CTRL_ALT(char *c);
-      void  CTRL_ALT_DEL(void);
+      void  CTRL_ALT_DEL();
       void  CTRL_ALT_ARROW(char *c);
 
       void  WINDOWS(char *c);
 
-      void  ENTER(void);
-      void  TAB(void);
-      void  PRINT(void);
-      void  BACKSPACE(void);
-      void  RIGHT_ARROW(void);
-      void  LEFT_ARROW(void);
-      void  DOWN_ARROW(void);
-      void  UP_ARROW(void);
+      void  ENTER();
+      void  TAB();
+      void  PRINT();
+      void  BACKSPACE();
+      void  RIGHT_ARROW();
+      void  LEFT_ARROW();
+      void  DOWN_ARROW();
+      void  UP_ARROW();
 
       void  STRING(char *txt);
 };
 
-#endif
+ #endif
+
