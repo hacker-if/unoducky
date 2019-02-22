@@ -1,8 +1,14 @@
-#include "Arduino.h"
 #include "Keyboard.h"
 
-Keyboard::Keyboard()
-{
+#if ARDUINO >= 100
+    #include "Arduino.h"
+#else
+extern "C" {
+    #include "WConstants.h"
+}
+#endif
+
+Keyboard::Keyboard(){
     for (int i = 0; i < 8; i++) buf[i] = 0;
 }
 
@@ -13,10 +19,9 @@ void Keyboard::PRESS(){
     Serial.write(buf, 8);
 }
 
-void Keyboard::DELAY(unsigned t){
+void Keyboard::DELAY(unsigned long t){
     delay(t);
 }
-
 
 // ALT + *
 void Keyboard::ALT(char *c){
@@ -40,6 +45,14 @@ void Keyboard::ALT_F2(){
 void Keyboard::ALT_F4(){
     buf[0] = KEY_LEFT_ALT;
     buf[2] = KEY_F4;
+    PRESS();
+}
+
+
+// CTRL + *
+void Keyboard::CTRL(char *c){
+    buf[0] = KEY_LEFT_CTRL;
+    buf[2] = c[0] - 'a' + 4;
     PRESS();
 }
 
@@ -92,6 +105,11 @@ void Keyboard::WINDOWS(char *c){
 
 
 // Single Keys
+void Keyboard::KEY(uint8_t key){
+    buf[2] = key;
+    PRESS();
+}
+
 void Keyboard::ENTER(){
     buf[2] = KEY_ENTER;
     PRESS();

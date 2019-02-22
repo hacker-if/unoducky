@@ -1,7 +1,16 @@
 #ifndef Keyboard_h
 #define Keyboard_h
 
+#define KEYBOARDLIBVERSION "1.0.0"
+
+#include <inttypes.h>
+
+#if ARDUINO >= 100
 #include "Arduino.h"
+#else
+#include "WProgram.h"
+#include "pins_arduino.h"
+#endif
 
 #define KEY_LEFT_CTRL	0x01
 #define KEY_LEFT_SHIFT	0x02
@@ -15,7 +24,7 @@
 #define KEY_LEFT_ARROW  0x50
 #define KEY_DOWN_ARROW  0x51
 #define KEY_UP_ARROW    0x52
-#define KEY_ESC         0x29T
+#define KEY_ESC         0x29
 #define KEY_F1          0x3A
 #define KEY_F2          0x3B
 #define KEY_F3          0x3C
@@ -55,12 +64,14 @@ class Keyboard
    public:
       Keyboard();
       void  PRESS();
-      void  DELAY(unsigned t);
+      void  DELAY(unsigned long t);
 
       void  ALT(char *c);
       void  ALT_SPACE();
       void  ALT_F2();
       void  ALT_F4();
+
+      void  CTRL(char *c);
 
       void  CTRL_ALT(char *c);
       void  CTRL_ALT_DEL();
@@ -68,6 +79,7 @@ class Keyboard
 
       void  WINDOWS(char *c);
 
+      void  KEY(uint8_t key);
       void  ENTER();
       void  TAB();
       void  PRINT();
@@ -80,5 +92,4 @@ class Keyboard
       void  STRING(char *txt);
 };
 
- #endif
-
+#endif

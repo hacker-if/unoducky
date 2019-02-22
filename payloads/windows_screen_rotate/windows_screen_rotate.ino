@@ -6,19 +6,14 @@
 Keyboard kb;
 
 
-void setup()
-{  
-    Serial.begin(9600);  
+void setup() {
+    Serial.begin(9600);
     delay(1000);
 }
 
 
-void loop()
-{
+void loop() {
     kb.CTRL_ALT_ARROW("d");
-    
-    kb.DELAY(300000); 
+
+    delay(300000);
 }
-
-
-

